@@ -3,6 +3,7 @@ package com.vdarko.workshop.tdd.arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class ArraySumEdgeCasesTest {
@@ -32,6 +33,7 @@ public class ArraySumEdgeCasesTest {
    * <b>THEN</b> null is returned</br>
    */
   @Test
+  @Disabled
   public void testNullInput() {
 
     // GIVEN

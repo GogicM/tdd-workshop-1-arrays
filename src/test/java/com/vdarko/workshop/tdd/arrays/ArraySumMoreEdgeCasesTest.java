@@ -3,6 +3,7 @@ package com.vdarko.workshop.tdd.arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class ArraySumMoreEdgeCasesTest {
@@ -16,6 +17,7 @@ public class ArraySumMoreEdgeCasesTest {
    * @see Math#addExact(int, int)
    */
   @Test
+  @Disabled
   public void testSumOverflow() {
 
     // GIVEN
@@ -45,6 +47,7 @@ public class ArraySumMoreEdgeCasesTest {
    * @see Math#addExact(int, int)
    */
   @Test
+  @Disabled
   public void testSumUnderflow() {
 
     // GIVEN

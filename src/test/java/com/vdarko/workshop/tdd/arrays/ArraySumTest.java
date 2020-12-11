@@ -1,5 +1,6 @@
 package com.vdarko.workshop.tdd.arrays;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ArraySumTest {
@@ -13,12 +14,57 @@ public class ArraySumTest {
   public void testSum() {
 
     // GIVEN
-    //numbers
+    Integer[] numbers = new Integer[] {1,2,3,4,5};
 
     // WHEN
-    // sum is calculated
+    ArraySum arraySum = new ArraySum();
+    Integer actual = arraySum.sum(numbers);
 
     // THEN
-    // assert sum that it is equal to the expected value
+    Assertions.assertThat(actual).isEqualTo(15);
   }
+
+  /**
+   * <b>GIVEN</b> null </br>
+   * <b>WHEN</b> sum is calculated</br>
+   * <b>THEN</b> throw {@code InvalidArgumetException} </br>
+   */
+  @Test
+  public void testSumForNull() {
+
+    // GIVEN
+    Integer[] numbers = null;
+
+    // WHEN
+    ArraySum arraySum = new ArraySum();
+
+    Throwable throwable = Assertions.catchThrowable(() -> arraySum.sum(numbers));
+
+    // THEN
+    Assertions.assertThat(throwable) //
+    .isInstanceOf(IllegalArgumentException.class) //
+    .hasMessage("Array can not be null.");
+  }
+
+  /**
+   * <b>GIVEN</b> Array with large numbers </br>
+   * <b>WHEN</b> sum is calculated</br>
+   * <b>THEN</b> throw ArithmeticException </br>
+   */
+  @Test
+  public void testSumForLargeNumber() {
+    // GIVEN
+    Integer[] numbers = new Integer[]{Integer.MAX_VALUE, 1};
+
+    // WHEN
+    ArraySum arraySum = new ArraySum();
+
+    Throwable throwable = Assertions.catchThrowable(() -> arraySum.sum(numbers));
+
+    // THEN
+    Assertions.assertThat(throwable) //
+        .isInstanceOf(ArithmeticException.class) //
+        .hasMessage("integer overflow");
+  }
+
 }
